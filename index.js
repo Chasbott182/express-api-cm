@@ -1,9 +1,11 @@
 const express = require("express");
 const {db:destination} = require("./DB");
 const {getRandom} = require("./HELPERS");
-
+var cors = require('cors')
 const server = express();
+
 server.use(express.json());
+server.use(cors());
 
 server.post("/destinations", (req, res)=>{
     const _id = getRandom();   
