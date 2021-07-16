@@ -9,8 +9,8 @@ server.use(cors());
 
 server.post("/destinations", (req, res)=>{
     const _id = getRandom();   
-    const {name, location, photo} = req.body;
-    destination[_id] = {_id, name, location, photo};
+    const {name, location, photo, description} = req.body;
+    destination[_id] = {_id, name, location, photo, description};
 
     //destination.push(req.body);
     //console.log(req.body);
@@ -40,6 +40,9 @@ server.put("/destinations", (req, res)=>{
     if (photo !== undefined){
         dest.photo=photo;
     }
+    if (description !== undefined){
+        dest.description=description;
+    }
 
     res.send(dest);
     //destination._id.location = req.body.location;
@@ -57,7 +60,7 @@ server.delete("/destinations", (req, res)=>{
     }
 
     const dest = destination[_id]
-    const {name, location, photo} = req.body;
+    const {name, location, photo, description} = req.body;
     
     delete destination[_id];
 
